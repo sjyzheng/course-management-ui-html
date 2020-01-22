@@ -1,28 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Course Editor</title>
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Course Manager</title>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link 	href="course-editor.style.client.css"
-                 rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet"	href="course-editor.style.client.css">
+    <link href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div>
+                <a class="fas fa-times wbdv-course-editor wbdv-close" style="color: white" href="#"></a>
+                <a class="navbar-brand col-3 mr-sm-3 font-weight-bold wbdv-course-title" href="#">
+                    CS5610 - WebDev</a>
+            </div>
 
-    </head>
-    <body>
-        <h1>
-            Course Editor
-        </h1>
-        <div>
-            <h2 id="wbdv-module-list">Module list</h2>
-            <ul>
-                <li class="wbdv-module">Module 1</li>
-                <li class="wbdv-module">Module 2</li>
-                <li class="wbdv-module">Module 3</li>
-            </ul>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <div class="list-group list-group-horizontal col-10">
+                    <a class="list-group-item list-group-item-action list-group-item-light border-0 font-weight-bold bg-dark active px-4 text-center wbdv-page-tab" href="#"> Build</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light border-0 font-weight-bold bg-dark px-4 text-center wbdv-page-tab" href="#"> Pages</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light border-0 font-weight-bold bg-dark px-4 text-center wbdv-page-tab" href="#"> Theme</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light border-0 font-weight-bold bg-dark px-4 text-center wbdv-page-tab" href="#"> Store</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light border-0 font-weight-bold bg-dark px-4 text-center wbdv-page-tab" href="#"> Apps</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light border-0 font-weight-bold bg-dark px-4 text-center wbdv-page-tab" href="#"> Settings</a>
+                </div>
+            </div>
+            <div>
+                <i class="fas fa-plus collapse navbar-collapse wbdv-new-page-btn" style="color: white"></i>
+            </div>
+            <div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <div class="d-block d-lg-none">
+            <div class="dropdown m-2">
+                <button class="btn btn-block btn-secondary dropdown-toggle" type="button" id="dropdownModule" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Modules
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Module 1 - jQuery</a>
+                    <a class="dropdown-item" href="#">Module 2 - React</a>
+                    <a class="dropdown-item" href="#">Module 3 - Redux</a>
+                    <a class="dropdown-item" href="#">Module 4 - Native</a>
+                    <a class="dropdown-item" href="#">Module 5 - Angular</a>
+                    <a class="dropdown-item" href="#">Module 6 - Node</a>
+                    <a class="dropdown-item" href="#">Module 7 - Mongo</a>
+                    <a class="dropdown-item" href="#">Add Module</a>
+
+                </div>
+            </div>
         </div>
-        <div>
-            <h2 id="wbdv-lessons">Lessons</h2>
+
+        <div class="d-block d-md-none">
+            <div class="dropdown m-2">
+                <button class="btn btn-block btn-secondary dropdown-toggle" type="button" id="dropdownLesson" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Lessons
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Lesson 1</a>
+                    <a class="dropdown-item" href="#">Lesson 2</a>
+                    <a class="dropdown-item" href="#">Lesson 3</a>
+                    <a class="dropdown-item" href="#">Add Lesson</a>
+
+                </div>
+            </div>
         </div>
-    </body>
+
+        <div class="d-block d-md-none">
+            <div class="dropdown m-2">
+                <button class="btn btn-block btn-secondary dropdown-toggle" type="button" id="dropdownTopic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Topics
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Topic 1</a>
+                    <a class="dropdown-item" href="#">Topic 2</a>
+                    <a class="dropdown-item" href="#">Topic 3</a>
+                    <a class="dropdown-item" href="#">Topic 4</a>
+                    <a class="dropdown-item" href="#">Add Topic</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 d-none d-lg-block">
+                <div class="list-group bg-dark min-vh-100 wbdv-module-list">
+                    <div class="list-group-item list-group-item-dark border-0 active mx-3 mt-3 rounded wbdv-module-item">
+                        <a class="text-white text-truncate wbdv-module-item-title" href="#">
+                            Module 1 - jQuery
+                            <a class="fas fa-times float-lg-right mt-1 wbdv-module-item-delete-btn" style="color: white" href="#"></a>
+                        </a>
+                    </div>
+                    <div class="list-group-item list-group-item-dark border-0 bg-secondary mx-3 mt-3 rounded wbdv-module-item">
+                        <a class="text-white text-truncate wbdv-module-item-title" href="#">
+                            Module 2 - React
+                            <a class="fas fa-times float-lg-right mt-1 wbdv-module-item-delete-btn" style="color: white" href="#"></a>
+                        </a>
+                    </div>
+
+                    <div class="list-group-item list-group-item-dark border-0 bg-secondary mx-3 mt-3 rounded wbdv-module-item">
+                        <a class="text-white text-truncate wbdv-module-item-title" href="#">
+                            Module 3 - Redux
+                            <a class="fas fa-times float-lg-right mt-1 wbdv-module-item-delete-btn" style="color: white" href="#"></a>
+                        </a>
+                    </div>
+
+                    <div class="list-group-item list-group-item-dark border-0 bg-secondary mx-3 mt-3 rounded wbdv-module-item">
+                        <a class="text-white text-truncate wbdv-module-item-title" href="#">
+                            Module 4 - Native
+                            <a class="fas fa-times float-lg-right mt-1 wbdv-module-item-delete-btn" style="color: white" href="#"></a>
+                        </a>
+                    </div>
+
+                    <div class="list-group-item list-group-item-dark border-0 bg-secondary mx-3 mt-3 rounded wbdv-module-item">
+                        <a class="text-white text-truncate wbdv-module-item-title" href="#">
+                            Module 5 - Angular
+                            <a class="fas fa-times float-lg-right mt-1 wbdv-module-item-delete-btn" style="color: white" href="#"></a>
+                        </a>
+                    </div>
+
+                    <div class="list-group-item list-group-item-dark border-0 bg-secondary mx-3 mt-3 rounded wbdv-module-item">
+                        <a class="text-white text-truncate wbdv-module-item-title" href="#">
+                            Module 6 - Node
+                            <a class="fas fa-times float-lg-right mt-1 wbdv-module-item-delete-btn" style="color: white" href="#"></a>
+                        </a>
+                    </div>
+
+                    <div class="list-group-item list-group-item-dark border-0 bg-secondary mx-3 mt-3 rounded wbdv-module-item">
+                        <a class="text-white text-truncate wbdv-module-item-title" href="#">
+                            Module 7 - Mongo
+                            <a class="fas fa-times float-lg-right mt-1 wbdv-module-item-delete-btn" style="color: white" href="#"></a>
+                        </a>
+                    </div>
+                    <a class="fas fa-plus text-right m-4 wbdv-module-item-delete-btn" style="color: white" href="#"></a>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-12">
+                <div class="d-none d-md-block my-2">
+                    <ul class="nav nav-tabs nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                Lesson 1
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Lesson 2
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Lesson 3
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                +
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <div class="d-none d-md-block">
+                    <nav class="nav nav-pills nav-fill my-2 text-nowrap wbdv-topic-pill-list">
+                        <a class="nav-item nav-link bg-secondary text-white mx-1 wbdv-topic-pill" href="#">Topic 1</a>
+                        <a class="nav-item nav-link active text-white mx-1 wbdv-topic-pill" href="#">Topic 2</a>
+                        <a class="nav-item nav-link bg-secondary text-white mx-1 wbdv-topic-pill" href="#">Topic 3</a>
+                        <a class="nav-item nav-link bg-secondary text-white mx-1 wbdv-topic-pill" href="#">Topic 4</a>
+                        <a class="nav-item nav-link bg-secondary text-white mx-1 wbdv-topic-add-btn" href="#">+</a>
+                    </nav>
+                </div>
+
+                <ul class="nav nav-pills justify-content-end mt-2">
+                    <li class="nav-item">
+                        <a class="nav-link active bg-success mx-1" href="#">Save</a>
+                    </li>
+                    <li class="nav-item custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                        <label class="custom-control-label m-2" for="customSwitch1">Preview</label>
+                    </li>
+                </ul>
+
+                <div class="border m-3 p-2 rounded">
+                    <div class="form-row d-flex justify-content-between">
+                        <div class="col">
+                            <h2 >Heading Widget</h2>
+                        </div>
+                        <div class="col-lg-4 col-md-6 float-right">
+                            <i class="fas fa-arrow-circle-up fa-2x mr-1" style="color: darkorange"></i>
+                            <i class="fas fa-arrow-circle-down fa-2x mr-1" style="color: darkorange"></i>
+                            <select class="custom-select mb-3 col-5 mr-1">
+                                <option selected>Heading</option>
+                                <option value="1">Paragraph</option>
+                                <option value="2">List</option>
+                                <option value="3">Image</option>
+                            </select>
+                            <i class="fas fa-times-circle fa-2x" style="color: crimson"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1"></label>
+                        <input id="exampleFormControlInput1" class="form-control" type="text"
+                               placeholder="Heading text">
+                    </div>
+
+                    <div class="form-group">
+                        <select class="custom-select">
+                            <option>Heading 1</option>
+                            <option>Heading 2</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="text"
+                               placeholder="Widget name">
+                    </div>
+                        <h3>Preview</h3>
+                        <h1>Heading text</h1>
+                </div>
+                <a class="fas fa-plus-circle fa-2x float-right mr-2 wbdv-button wbdv-add-course" href="#" style="color: crimson"></a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
 </html>
