@@ -13,7 +13,6 @@
     $(main);
 
     function main () {
-
         $usernameFld = $("#usernameFld");
         $passwordFld = $("#passwordFld");
         $firstNameFld = $("#firstNameFld");
@@ -70,9 +69,7 @@
 
     const createUser = () => {
         readForm();
-
         alert('create new user');
-
         user.setUsername($username);
         user.setPassword($password);
         user.setFirstName($firstName);
@@ -114,9 +111,8 @@
           userService.updateUser(userId,user)
               .then(findAllUsers);
           clearForm();
-          userId=-1;
+          userId = -1;
       }
-
     };
 
     const renderUser = (user) => {
