@@ -20,9 +20,7 @@
         $roleFld = $("#roleFld");
 
         $searchBtn = $("#wbdv-search");
-        $searchBtn.click(function () {
-            alert("search")
-        });
+        $searchBtn.click(search);
 
         $createBtn = $("#wbdv-create");
         $createBtn.click(createUser);
@@ -93,11 +91,14 @@
         userId = uid;
     };
 
+    const search = () =>{
+        userService.findAllUsers().then(searchUser);
+    }
+
     const deleteUser = (userId) => {
         userService.deleteUser(userId)
             .then(findAllUsers);
     };
-    // function selectUser() { … }
 
     const updateUser = () => {
       readForm();
@@ -130,7 +131,6 @@
             let newRow = $userRowTemplate.clone();
 
             newRow.find("#rowUsername").html(user.username);
-            newRow.find("#rowPassword").html(user.password);
             newRow.find("#rowFirstName").html(user.firstName);
             newRow.find("#rowLastName").html(user.lastName);
 
@@ -141,6 +141,24 @@
             $tbody.append(newRow);
         }
     };
+
+    function userAttribute (user) {
+        for(let x in user){
+            let y = user[x];
+            console.log(y);
+            if(y!="" && y!=null){
+                if(y== $firstName || y == $lastName || y== $username|| y == $role)return true;
+            }
+        }
+        return false;
+    }
+
+    const searchUser = (users) => {
+        readForm();
+        let temp =  users.filter(userAttribute);
+        console.log(temp);
+        renderUsers(temp);
+    }
 
 
 })();
