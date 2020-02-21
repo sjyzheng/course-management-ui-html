@@ -10,6 +10,7 @@ public class WidgetService {
     List<Widget> widgets = new ArrayList<>();
 
     public Widget createWidget(String tid, Widget newWidget) {
+        newWidget.setTopicId(tid);
         widgets.add(newWidget);
         return newWidget;
     }
