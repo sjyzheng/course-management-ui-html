@@ -14,29 +14,32 @@ public class WidgetController {
     WidgetService widgetService = new WidgetService();
 
     @PostMapping("/topics/{topicId}/widgets")
-    public Widget createWidget(@RequestBody Widget newWidget, @PathVariable String topicId) {
-        return widgetService.createWidget(newWidget,topicId);
-    }
-
-    @DeleteMapping("/widgets/{widgetId}")
-    public int deleteWidget(@PathVariable("widgetId") String widgetId) {
-        return widgetService.deleteWidget(widgetId);
-    }
-
-
-    @GetMapping("/widgets")
-    public List<Widget> findAllWidget() {
-        return widgetService.findAllWidget();
+    public Widget createWidget(@PathVariable("topicId") String tid, @RequestBody Widget widget) {
+        return widgetService.createWidget(tid, widget);
     }
 
     @GetMapping("topics/{topicId}/widgets")
-    public List<Widget> findWidgetsForTopic(@PathVariable("topicId") String topicId) {
-        return widgetService.findWidgetsForTopic(topicId);
+    public List<Widget> findWidgetsForTopic(@PathVariable("topicId") String tid) {
+        return widgetService.findWidgetsForTopic(tid);
     }
 
     @PutMapping("/widgets/{widgetId}")
-    public int updateWidget(@PathVariable("widgetId") String widgetId,
+    public int updateWidget(@PathVariable("widgetId") String wid,
                             @RequestBody Widget widget) {
-        return widgetService.updateWidget(widgetId, widget);
+        return widgetService.updateWidget(wid, widget);
     }
+
+    @DeleteMapping("/widgets/{widgetId}")
+    public int deleteWidget(@PathVariable("widgetId") String wid) {
+        return widgetService.deleteWidget(wid);
+    }
+
+
+//    @GetMapping("/widgets")
+//    public List<Widget> findAllWidget() {
+//        return widgetService.findAllWidget();
+//    }
+
+
+
 }
