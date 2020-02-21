@@ -8,7 +8,7 @@ public class Widget {
     private int order;
     private String text;
 //    private String url;
-    private int size;
+    private int size = 1;
 //    private int width, height;
 //    private String ccsClass;
 //    private String style;
