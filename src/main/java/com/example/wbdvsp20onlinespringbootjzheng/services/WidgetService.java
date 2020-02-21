@@ -27,9 +27,10 @@ public class WidgetService {
             Widget curWidget = widgets.get(i);
             if (curWidget.getId().equals(wid)) {
                 widgets.set(i, widget);
+                return 1;
             }
         }
-        return 1;
+        return 0;
     }
 
     public int deleteWidget(String wid) {
