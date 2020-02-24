@@ -5,8 +5,8 @@ import java.awt.*;
 public class Widget {
     private String id;
     private String type = "HEADING";
-    private int order;
-    private String text;
+    private int order = 0;
+    private String text = "Heading text";
 //    private String url;
     private int size = 1;
 //    private int width, height;
