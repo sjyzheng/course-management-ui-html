@@ -9,14 +9,17 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 public class WidgetController {
-
-
     WidgetService widgetService = new WidgetService();
 
     @PostMapping("/topics/{topicId}/widgets")
     public Widget createWidget(@PathVariable("topicId") String tid, @RequestBody Widget widget) {
         return widgetService.createWidget(tid, widget);
     }
+
+//    @PostMapping("/widgets")
+//    public int moveWidget(@RequestBody Widget widget) {
+//        return widgetService.moveWidget(widget);
+//    }
 
     @GetMapping("/topics/{topicId}/widgets")
     public List<Widget> findWidgetsForTopic(@PathVariable("topicId") String tid) {
