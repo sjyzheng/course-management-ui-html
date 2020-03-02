@@ -11,38 +11,30 @@ import java.util.List;
 public class WidgetController {
     WidgetService widgetService = new WidgetService();
 
-    @PostMapping("/topics/{topicId}/widgets")
+    @PostMapping("api/topics/{topicId}/widgets")
     public Widget createWidget(@PathVariable("topicId") String tid, @RequestBody Widget widget) {
         return widgetService.createWidget(tid, widget);
     }
 
-//    @PostMapping("/widgets")
-//    public int moveWidget(@RequestBody Widget widget) {
-//        return widgetService.moveWidget(widget);
-//    }
-
-    @GetMapping("/topics/{topicId}/widgets")
+    @GetMapping("api/topics/{topicId}/widgets")
     public List<Widget> findWidgetsForTopic(@PathVariable("topicId") String tid) {
         return widgetService.findWidgetsForTopic(tid);
     }
 
-    @PutMapping("/widgets/{widgetId}")
+    @GetMapping("api/widgets")
+    public List<Widget> findAllWidgets() {
+        return widgetService.findAllWidgets();
+    }
+
+    @PutMapping("api/widgets/{widgetId}")
     public int updateWidget(@PathVariable("widgetId") String wid,
                             @RequestBody Widget widget) {
         return widgetService.updateWidget(wid, widget);
     }
 
-    @DeleteMapping("/widgets/{widgetId}")
+    @DeleteMapping("api/widgets/{widgetId}")
     public int deleteWidget(@PathVariable("widgetId") String wid) {
         return widgetService.deleteWidget(wid);
     }
-
-
-//    @GetMapping("/widgets")
-//    public List<Widget> findAllWidget() {
-//        return widgetService.findAllWidget();
-//    }
-
-
 
 }
