@@ -11,12 +11,13 @@ public class Widget {
     @GeneratedValue (strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    private String type = "HEADING";
-    private String text = "Heading text";
-//    private String url;
-    private int widgetOrder = 0;
+    private String type = "Heading";
+    private String text = "Widget Text";
+    private String src;
+    private int widgetOrder;
     private int size = 1;
     private String title = "Heading Widget";
+    private String ListType = "Unordered";
 
     @ManyToOne
     @JsonIgnore
@@ -60,14 +61,6 @@ public class Widget {
         this.type = type;
     }
 
-    public int getOrder() {
-        return widgetOrder;
-    }
-
-    public void setOrder(int order) {
-        this.widgetOrder = order;
-    }
-
     public int getSize() {
         return size;
     }
@@ -82,5 +75,29 @@ public class Widget {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getWidgetOrder() {
+        return widgetOrder;
+    }
+
+    public void setWidgetOrder(int widgetOrder) {
+        this.widgetOrder = widgetOrder;
+    }
+
+    public String getListType() {
+        return ListType;
+    }
+
+    public void setListType(String listType) {
+        ListType = listType;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
     }
 }

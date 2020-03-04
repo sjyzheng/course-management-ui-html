@@ -41,6 +41,9 @@ public class WidgetService {
         widgetToUpdate.setSize(updatedWidget.getSize());
         widgetToUpdate.setText(updatedWidget.getText());
         widgetToUpdate.setType(updatedWidget.getType());
+        widgetToUpdate.setListType(updatedWidget.getListType());
+        widgetToUpdate.setSrc(updatedWidget.getSrc());
+
         widgetRepository.save(widgetToUpdate);
         return 1;
     }
