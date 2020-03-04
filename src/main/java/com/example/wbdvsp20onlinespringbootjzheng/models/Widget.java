@@ -1,28 +1,46 @@
 package com.example.wbdvsp20onlinespringbootjzheng.models;
 
-import java.awt.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "widgets")
 public class Widget {
-    private String id;
+    @Id
+    @GeneratedValue (strategy= GenerationType.IDENTITY)
+    private Integer id;
+
     private String type = "HEADING";
-    private int order = 0;
     private String text = "Heading text";
 //    private String url;
+    private int widgetOrder = 0;
     private int size = 1;
+    private String title = "Heading Widget";
+
+    @ManyToOne
+    @JsonIgnore
+    private Topic topic;
+
 //    private int width, height;
 //    private String ccsClass;
 //    private String style;
 //    private String value;
-    private String topicId;
-
-    private String title = "Heading Widget";
 
 
-    public String getId() {
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -42,20 +60,12 @@ public class Widget {
         this.type = type;
     }
 
-    public String getTopicId() {
-        return topicId;
-    }
-
-    public void setTopicId(String topicId) {
-        this.topicId = topicId;
-    }
-
     public int getOrder() {
-        return order;
+        return widgetOrder;
     }
 
     public void setOrder(int order) {
-        this.order = order;
+        this.widgetOrder = order;
     }
 
     public int getSize() {
