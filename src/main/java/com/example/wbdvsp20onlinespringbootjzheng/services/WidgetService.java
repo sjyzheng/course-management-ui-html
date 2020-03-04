@@ -1,58 +1,53 @@
 package com.example.wbdvsp20onlinespringbootjzheng.services;
+import com.example.wbdvsp20onlinespringbootjzheng.models.Topic;
 import com.example.wbdvsp20onlinespringbootjzheng.models.Widget;
+import com.example.wbdvsp20onlinespringbootjzheng.repositories.TopicRepository;
+import com.example.wbdvsp20onlinespringbootjzheng.repositories.WidgetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
+@Service
 public class WidgetService {
 
-    List<Widget> widgets = new ArrayList<>();
+    @Autowired
+    WidgetRepository widgetRepository;
 
-    public Widget createWidget(String tid, Widget newWidget) {
-        newWidget.setTopicId(tid);
-        widgets.add(newWidget);
-        return newWidget;
+    @Autowired
+    TopicRepository topicRepository;
+
+    public Widget createWidget(Integer tid, Widget newWidget) {
+        Topic topic = topicRepository.findById(tid).get();
+        newWidget.setTopic(topic);
+        return widgetRepository.save(newWidget);
     }
 
-    public List<Widget> findWidgetsForTopic(String tid) {
-        List<Widget> resultWidgets = new ArrayList<>();
-        for (Widget widget: widgets) {
-            if (widget.getTopicId().equals(tid)) resultWidgets.add(widget);
-        }
-        return resultWidgets;
+    public List<Widget> findWidgetsForTopic(Integer tid) {
+        return widgetRepository.findWidgetsForTopic(tid);
     }
 
-    public int updateWidget(String wid, Widget widget) {
-        for (int i=0; i<widgets.size(); i++) {
-            Widget curWidget = widgets.get(i);
-            if (curWidget.getId().equals(wid)) {
-                widgets.set(i, widget);
-                return 1;
-            }
-        }
-        return 0;
+    public Widget findWidgetById(Integer wid) {
+        return widgetRepository.findWidgetById(wid);
     }
 
-    public int deleteWidget(String wid) {
-        widgets = widgets.stream()
-                .filter(widget -> !widget.getId().equals(wid))
-                .collect(Collectors.toList());
+    public List<Widget> findAllWidgets() {
+        return widgetRepository.findAllWidgets();
+    }
+
+    public int updateWidget(Integer wid, Widget updatedWidget) {
+        Widget widgetToUpdate = widgetRepository.findWidgetById(wid);
+        widgetToUpdate.setTitle(updatedWidget.getTitle());
+        widgetToUpdate.setSize(updatedWidget.getSize());
+        widgetToUpdate.setText(updatedWidget.getText());
+        widgetToUpdate.setType(updatedWidget.getType());
+        widgetRepository.save(widgetToUpdate);
         return 1;
     }
 
-//    public List<Widget> findAllWidget() {
-//        Widget w1 = new Widget();
-//        Widget w2 = new Widget();
-//        List<Widget> widgets = new ArrayList<>();
-//
-//        w1.setTitle("W1");
-//        w1.setType("Heading");
-//        w2.setTitle("W2");
-//        widgets.add(w1);
-//        widgets.add(w2);
-//
-//        return widgets;
-//    }
+    public int deleteWidget(Integer wid) {
+        widgetRepository.deleteById(wid);
+        return 1;
+    }
 
 }
