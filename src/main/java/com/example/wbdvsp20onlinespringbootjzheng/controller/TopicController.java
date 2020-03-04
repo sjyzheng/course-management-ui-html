@@ -1,7 +1,6 @@
 package com.example.wbdvsp20onlinespringbootjzheng.controller;
 
 import com.example.wbdvsp20onlinespringbootjzheng.models.Topic;
-import com.example.wbdvsp20onlinespringbootjzheng.models.Widget;
 import com.example.wbdvsp20onlinespringbootjzheng.services.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +41,7 @@ public class TopicController {
     }
 
     @GetMapping("/api/topics/{topicId}")
-    public Topic findTopicById (Integer tid) {
+    public Topic findTopicById (@PathVariable("topicId") Integer tid) {
         return topicService.findTopicById(tid);
     }
 }
