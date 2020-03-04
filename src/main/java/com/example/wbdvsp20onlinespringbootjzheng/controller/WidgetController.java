@@ -2,6 +2,7 @@ package com.example.wbdvsp20onlinespringbootjzheng.controller;
 
 import com.example.wbdvsp20onlinespringbootjzheng.models.Widget;
 import com.example.wbdvsp20onlinespringbootjzheng.services.WidgetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,31 +10,38 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 public class WidgetController {
-    WidgetService widgetService = new WidgetService();
 
-    @PostMapping("api/topics/{topicId}/widgets")
-    public Widget createWidget(@PathVariable("topicId") String tid, @RequestBody Widget widget) {
+    @Autowired
+    WidgetService widgetService;
+
+    @PostMapping("/api/topics/{topicId}/widgets")
+    public Widget createWidget(@PathVariable("topicId") Integer tid, @RequestBody Widget widget) {
         return widgetService.createWidget(tid, widget);
     }
 
-    @GetMapping("api/topics/{topicId}/widgets")
-    public List<Widget> findWidgetsForTopic(@PathVariable("topicId") String tid) {
+    @GetMapping("/api/topics/{topicId}/widgets")
+    public List<Widget> findWidgetsForTopic(@PathVariable("topicId") Integer tid) {
         return widgetService.findWidgetsForTopic(tid);
     }
 
-    @GetMapping("api/widgets")
+    @GetMapping("/api/widgets")
     public List<Widget> findAllWidgets() {
         return widgetService.findAllWidgets();
     }
 
-    @PutMapping("api/widgets/{widgetId}")
-    public int updateWidget(@PathVariable("widgetId") String wid,
+    @GetMapping("/api/widgets/{widgetId}")
+    public Widget findWidgetById(@PathVariable("widgetId") Integer wid) {
+        return widgetService.findWidgetById(wid);
+    }
+
+    @PutMapping("/api/widgets/{widgetId}")
+    public int updateWidget(@PathVariable("widgetId") Integer wid,
                             @RequestBody Widget widget) {
         return widgetService.updateWidget(wid, widget);
     }
 
-    @DeleteMapping("api/widgets/{widgetId}")
-    public int deleteWidget(@PathVariable("widgetId") String wid) {
+    @DeleteMapping("/api/widgets/{widgetId}")
+    public int deleteWidget(@PathVariable("widgetId") Integer wid) {
         return widgetService.deleteWidget(wid);
     }
 
