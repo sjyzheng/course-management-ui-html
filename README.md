@@ -1,4 +1,4 @@
-"# wbdv-online-sp20-jzheng-springboot" 
+# course-management-ui-design
 
 User Interface Design\
 HTML and CSS files for the Course Management Web Application\
